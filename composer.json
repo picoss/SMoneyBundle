@@ -15,10 +15,9 @@
     ],
     "autoload": {
         "psr-4": {
-            "Picoss\\SMoneyBundle": ""
+            "Picoss\\SMoneyBundle\\": ""
         }
     },
-    "target-dir": "Picoss/SMoneyBundle",
     "require": {
         "picoss/smoney": "dev-master"
     }
