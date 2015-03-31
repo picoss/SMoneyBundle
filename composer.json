@@ -19,7 +19,6 @@
         }
     },
     "require": {
-        "picoss/smoney": "dev-master"
-    },
-    "minimum-stability": "dev"
+        "picoss/smoney": "~1.0"
+    }
 }
