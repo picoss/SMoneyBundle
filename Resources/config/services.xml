@@ -7,15 +7,39 @@
     <parameters>
         <parameter key="picoss.smoney.api.class">Picoss\SMoneyBundle\SMoneyApi</parameter>
         <parameter key="picoss.smoney.http_client.class">Picoss\SMoneyBundle\HttpClient</parameter>
+        <parameter key="picoss.smoney.subscriber.profiler.class">Picoss\SMoneyBundle\GuzzleHttp\Subscriber\Profiler</parameter>
+        <parameter key="picoss.smoney.subscriber.logger.class">GuzzleHttp\Subscriber\Log\LogSubscriber</parameter>
+        <parameter key="picoss.smoney.data_collector.class">Picoss\SMoneyBundle\DataCollector\SMoneyDataCollector</parameter>
     </parameters>
 
     <services>
+        <service id="picoss.smoney.subscriber.profiler" class="%picoss.smoney.subscriber.profiler.class%">
+        </service>
+
+        <service id="picoss.smoney.subscriber.logger" class="%picoss.smoney.subscriber.logger.class%">
+            <argument type="service" id="logger"/>
+        </service>
+
         <service id="picoss.smoney.http_client" class="%picoss.smoney.http_client.class%">
             <argument>%picoss.smoney.access_token%</argument>
             <argument>%picoss.smoney.base_url%</argument>
+            <call method="addSubscriber">
+                <argument type="service" id="picoss.smoney.subscriber.profiler"></argument>
+            </call>
+            <call method="addSubscriber">
+                <argument type="service" id="picoss.smoney.subscriber.logger"></argument>
+            </call>
         </service>
+
         <service id="picoss.smoney.api" class="%picoss.smoney.api.class%">
-            <argument type="service" id="picoss.smoney.http_client"></argument>
+            <argument type="service" id="picoss.smoney.http_client"/>
+        </service>
+
+        <service id="picoss.smoney.data_collector" class="%picoss.smoney.data_collector.class%">
+            <argument type="service" id="picoss.smoney.subscriber.profiler"/>
+            <tag name="data_collector"
+                 template="PicossSMoneyBundle:Collector:smoney"
+                 id="smoney"/>
         </service>
     </services>
 </container>

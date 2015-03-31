@@ -27,5 +27,6 @@ class PicossSMoneyExtension extends Extension
 
         $container->setParameter('picoss.smoney.access_token', $config['access_token']);
         $container->setParameter('picoss.smoney.base_url', $config['base_url']);
+        $container->setParameter('picoss.smoney.history_limit', $config['history_limit']);
     }
 }

@@ -22,9 +22,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('access_token')->cannotBeEmpty()->isRequired()->end()
-            ->scalarNode('base_url')->cannotBeEmpty()->isRequired()->end()
-            ->scalarNode('web_profiler')->defaultFalse()->end()
+                ->scalarNode('access_token')->cannotBeEmpty()->isRequired()->end()
+                ->scalarNode('base_url')->cannotBeEmpty()->isRequired()->end()
+                ->scalarNode('history_limit')->defaultValue(100)->end()
             ->end()
         ;
 
