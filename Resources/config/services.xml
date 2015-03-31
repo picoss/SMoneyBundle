@@ -11,7 +11,8 @@
 
     <services>
         <service id="picoss.smoney.http_client" class="%picoss.smoney.http_client.class%">
-            <argument>%%</argument>
+            <argument>%picoss.smoney.access_token%</argument>
+            <argument>%picoss.smoney.base_url%</argument>
         </service>
         <service id="picoss.smoney.api" class="%picoss.smoney.api.class%">
             <argument type="service" id="picoss.smoney.http_client"></argument>

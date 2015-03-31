@@ -18,13 +18,13 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('picoss_smoney');
+        $rootNode = $treeBuilder->root('picoss_s_money');
 
         $rootNode
             ->children()
-                ->scalarNode('access_token')->cannotBeEmpty()->isRequired()
-                ->scalarNode('base_url')->cannotBeEmpty()->isRequired()
-                ->scalarNode('web_profiler')->defaultFalse()
+            ->scalarNode('access_token')->cannotBeEmpty()->isRequired()->end()
+            ->scalarNode('base_url')->cannotBeEmpty()->isRequired()->end()
+            ->scalarNode('web_profiler')->defaultFalse()->end()
             ->end()
         ;
 
