@@ -47,11 +47,12 @@ class SMoneyDataCollector extends DataCollector
             }
             $data['methods'][$method]++;
             $data['total_time'] += $time['total'];
-            $data['error_count'] += (int) $error;
+            $data['error_count'] += (int)$error;
         };
 
         $isResponseError = function ($response) {
             $code = $response->getStatusCode();
+
             return ($code >= 400 && $code < 500) || ($code >= 500 && $code < 600);
         };
 
@@ -79,6 +80,38 @@ class SMoneyDataCollector extends DataCollector
         $this->data = $data;
     }
 
+    /**
+     * @return array
+     */
+    public function getCalls()
+    {
+        return isset($this->data['calls']) ? $this->data['calls'] : array();
+    }
+
+    /**
+     * @return int
+     */
+    public function countErrors()
+    {
+        return isset($this->data['error_count']) ? $this->data['error_count'] : 0;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMethods()
+    {
+        return isset($this->data['methods']) ? $this->data['methods'] : array();
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalTime()
+    {
+        return isset($this->data['total_time']) ? $this->data['total_time'] : 0;
+    }
+
     private function collectRequestData(RequestInterface $request)
     {
         return [
@@ -88,7 +121,7 @@ class SMoneyDataCollector extends DataCollector
             'host' => $request->getHost(),
             'path' => $request->getPath(),
             'query' => $request->getQuery(),
-            'body' => $request->getBody(),
+            'body' => (string) $request->getBody(),
         ];
     }
 
@@ -98,7 +131,7 @@ class SMoneyDataCollector extends DataCollector
             'statusCode' => $response->getStatusCode(),
             'reasonPhrase' => $response->getReasonPhrase(),
             'headers' => $response->getHeaders(),
-            'body' => $response->getBody(),
+            'body' => (string) $response->getBody(),
         ];
     }
 
