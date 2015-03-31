@@ -20,5 +20,6 @@
     },
     "require": {
         "picoss/smoney": "dev-master"
-    }
+    },
+    "minimum-stability": "dev"
 }
