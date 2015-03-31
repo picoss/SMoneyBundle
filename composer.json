@@ -1,0 +1,25 @@
+{
+    "name": "picoss/smoney-bundle",
+    "description": "Symfony2 S-Money bundle",
+    "keywords": [
+        "Symfony2",
+        "bundle",
+        "S-Money"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Romain HONEL",
+            "email": "romain.honel@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Picoss\\SMoneyBundle": ""
+        }
+    },
+    "target-dir": "Picoss/SMoneyBundle",
+    "require": {
+        "picoss/smoney": "dev-master"
+    }
+}
