@@ -20,6 +20,14 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('picoss_smoney');
 
+        $rootNode
+            ->children()
+                ->scalarNode('access_token')->cannotBeEmpty()->isRequired()
+                ->scalarNode('base_url')->cannotBeEmpty()->isRequired()
+                ->scalarNode('web_profiler')->defaultFalse()
+            ->end()
+        ;
+
         return $treeBuilder;
     }
 }
