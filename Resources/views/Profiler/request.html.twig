@@ -114,7 +114,7 @@
     {% if request.body is not empty %}
         <h5>Content</h5>
         <pre class="prettyprint linenums"><code class="language-javascript">
-                <script>document.write(JSON.stringify({{ response.body|raw }}, null, '    '));</script>
-            </code></pre>
+            <script>document.write(JSON.stringify({{ request.body|raw }}, null, '    '));</script>
+        </code></pre>
     {% endif %}
 </div>
