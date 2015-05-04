@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "picoss/smoney": "dev-master",
+        "picoss/smoney": "~1.0",
         "guzzlehttp/log-subscriber": "~1.0"
     }
 }
